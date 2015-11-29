@@ -10,8 +10,7 @@ ENV DCM_ARC_VERSION 2.18.0
 ENV DCM_ARR_VERSION 3.0.12
 ENV DCM4CHEE_HOME /var/local/dcm4chee
 
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-    curl zip mysql-server openjdk-6-jdk
+RUN apt-get update && apt-get install -yq --no-install-recommends curl zip mysql-server openjdk-6-jdk
 
 ADD stage stage
 # Download the binary package for DCM4CHEE
