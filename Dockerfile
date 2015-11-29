@@ -10,7 +10,7 @@ ENV DCM_ARC_VERSION 2.18.0
 ENV DCM_ARR_VERSION 3.0.12
 ENV DCM4CHEE_HOME /var/local/dcm4chee
 
-RUN apt-get update && apt-get install -yq --no-install-recommends curl zip mysql-server openjdk-6-jdk
+RUN apt-get update && apt-get install -yq --no-install-recommends curl zip unzip mysql-server openjdk-6-jdk
 
 ADD stage stage
 # Download the binary package for DCM4CHEE
@@ -50,7 +50,6 @@ RUN mysql -uarr -parr arrdb < $ARR_DIR/sql/dcm4chee-arr-mysql.ddl
 RUN killall mysqld
 RUN sleep 5s
 
-ADD stage stage
 RUN chmod 755 stage/*.bash
 RUN cd stage; ./setup.bash
 
