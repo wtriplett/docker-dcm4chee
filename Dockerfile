@@ -40,4 +40,6 @@ RUN ls ${ARR_DIR}
 # Copy files from the Audit Record Repository (ARR) to dcm4chee
 RUN ${DCM_DIR}/bin/install_arr.sh ${ARR_DIR}
 
+RUN sed -i 's/localhost/${ALIAS_PORT_1337_TCP_PORT}/g' ${DCM_DIR}/server/default/deploy/pacs-mysql-ds.xml
+
 CMD ["stage/start.bash"]
