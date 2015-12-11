@@ -18,7 +18,7 @@ RUN mkdir -p ${DCM4CHEE_HOME}
 WORKDIR ${DCM4CHEE_HOME}
 
 RUN apt-get update && apt-get install -yq --no-install-recommends \
-curl zip unzip openjdk-6-jdk python
+curl zip unzip openjdk-6-jdk python mysql-client
 
 # Download the binary package for DCM4CHEE
 RUN curl -G http://ufpr.dl.sourceforge.net/project/dcm4che/dcm4chee/${DCM_ARC_VERSION}/dcm4chee-${DCM_ARC_VERSION}-mysql.zip > /stage/dcm4chee-${DCM_ARC_VERSION}-mysql.zip
