@@ -42,5 +42,6 @@ RUN ls ${ARR_DIR}
 RUN ${DCM_DIR}/bin/install_arr.sh ${ARR_DIR}
 
 RUN chmod 755 /stage/*.bash
+RUN chmod 755 /stage/*.py
 
 CMD ["/stage/start.bash"]
