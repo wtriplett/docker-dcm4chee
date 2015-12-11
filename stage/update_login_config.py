@@ -14,7 +14,7 @@ for ap in root:
     if(ap.attrib.get("name") == "dcm4chee"):
         tmpEleme = copy.copy(ap)
 
-tmpEleme.set("name", "reporting")
+tmpEleme.set("name", "web-reporting")
 root.append(tmpEleme)
 xml_string = '\n'.join([doctype, ET.tostring(root, 'utf-8')])
 open('login-config.xml', 'w').write(xml_string)
