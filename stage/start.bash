@@ -10,7 +10,7 @@ ${DCM_DIR}/server/default/deploy/arr-mysql-ds.xml
 
 cd ${DCM_DIR}/server/default/conf/
 
-/stage/update_login_config.py
+#/stage/update_login_config.py
 
 echo "Waiting for pacsdb"
 until \
@@ -23,5 +23,4 @@ done
 
 echo -e "\nmysql ready"
 
-/usr/bin/mysqld_safe &
 ${DCM_DIR}/bin/run.sh
