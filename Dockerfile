@@ -31,7 +31,7 @@ RUN unzip -q /stage/jboss-4.2.3.GA-jdk6.zip
 ENV JBOSS_DIR=${DCM4CHEE_HOME}/jboss-4.2.3.GA
 
 # Download the Audit Record Repository (ARR) package
-RUN curl -G http://ufpr.dl.sourceforge.net/project/dcm4che/dcm4chee-arr/${DCM_ARR_VERSION}/dcm4chee-arr-${DCM_ARR_VERSION}-mysql.zip > /stage/dcm4chee-arr-${DCM_ARR_VERSION}-mysql.zip
+RUN curl -G http://superb-dca2.dl.sourceforge.net/project/dcm4che/dcm4chee-arr/${DCM_ARR_VERSION}/dcm4chee-arr-${DCM_ARR_VERSION}-mysql.zip > /stage/dcm4chee-arr-${DCM_ARR_VERSION}-mysql.zip
 RUN unzip -q /stage/dcm4chee-arr-${DCM_ARR_VERSION}-mysql.zip
 ENV ARR_DIR ${DCM4CHEE_HOME}/dcm4chee-arr-${DCM_ARR_VERSION}-mysql
 
