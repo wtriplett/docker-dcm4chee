@@ -21,12 +21,12 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 curl zip unzip openjdk-6-jdk python mysql-client
 
 # Download the binary package for DCM4CHEE
-RUN curl -G http://ufpr.dl.sourceforge.net/project/dcm4che/dcm4chee/${DCM_ARC_VERSION}/dcm4chee-${DCM_ARC_VERSION}-mysql.zip > /stage/dcm4chee-${DCM_ARC_VERSION}-mysql.zip
+RUN curl -G http://superb-dca2.dl.sourceforge.net/project/dcm4che/dcm4chee/${DCM_ARC_VERSION}/dcm4chee-${DCM_ARC_VERSION}-mysql.zip > /stage/dcm4chee-${DCM_ARC_VERSION}-mysql.zip
 RUN unzip -q /stage/dcm4chee-${DCM_ARC_VERSION}-mysql.zip
 ENV DCM_DIR=${DCM4CHEE_HOME}/dcm4chee-${DCM_ARC_VERSION}-mysql
 
 # Download the binary package for JBoss
-RUN curl -G http://ufpr.dl.sourceforge.net/project/jboss/JBoss/JBoss-4.2.3.GA/jboss-4.2.3.GA-jdk6.zip > /stage/jboss-4.2.3.GA-jdk6.zip
+RUN curl -G http://superb-dca2.dl.sourceforge.net/project/jboss/JBoss/JBoss-4.2.3.GA/jboss-4.2.3.GA-jdk6.zip > /stage/jboss-4.2.3.GA-jdk6.zip
 RUN unzip -q /stage/jboss-4.2.3.GA-jdk6.zip
 ENV JBOSS_DIR=${DCM4CHEE_HOME}/jboss-4.2.3.GA
 
