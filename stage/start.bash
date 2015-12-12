@@ -10,7 +10,7 @@ ${DCM_DIR}/server/default/deploy/arr-mysql-ds.xml
 
 cd ${DCM_DIR}/server/default/conf/
 
-#/stage/update_login_config.py
+python /stage/update_login_config.py
 
 echo "Waiting for pacsdb"
 until \

@@ -1,20 +1,30 @@
 #!/usr/bin/env python
-
-import xml.etree.ElementTree as ET
-import copy
-
-doctype = """<?xml version='1.0'?>
-<!DOCTYPE policy PUBLIC
-      '-//JBoss//DTD JBOSS Security Config 3.0//EN'
-      'http://www.jboss.org/j2ee/dtd/security_config.dtd'>"""
-tree = ET.parse('login-config.xml')
-root = tree.getroot()
-global tmpEleme
-for ap in root:
-    if(ap.attrib.get("name") == "dcm4chee"):
-        tmpEleme = copy.copy(ap)
-
-tmpEleme.set("name", "web-reporting")
-root.append(tmpEleme)
-xml_string = '\n'.join([doctype, ET.tostring(root, 'utf-8')])
-open('login-config.xml', 'w').write(xml_string)
+import string
+newElement =   "<application-policy name = 'web-reporting'>\n \
+       <authentication>\n \
+          <login-module code='org.jboss.security.auth.spi.DatabaseServerLoginModule'\n \
+             flag = 'required' >\n \
+             <module-option name = 'dsJndiName'>java:/pacsDS</module-option>\n \
+             <module-option name = 'principalsQuery'>select passwd from users where user_id=?</module-option>\n \
+             <module-option name = 'rolesQuery'>select roles, 'Roles' from roles where user_id=?</module-option>\n \
+             <module-option name = 'hashEncoding'>base64</module-option>\n \
+             <module-option name = 'hashCharset'>UTF-8</module-option>\n \
+             <module-option name = 'hashAlgorithm'>SHA-1</module-option>\n \
+          </login-module>\n \
+          <login-module code='org.dcm4chee.audit.login.AuditLoginModule'\n \
+             flag = 'optional' >\n \
+          </login-module>\n \
+       </authentication>\n \
+    </application-policy>"
+newElementArray = newElement.split('\n')
+file = open('login-config.xml', 'r')
+fileArray = file.read().split('\n')
+global last_index
+for index, fileLine in enumerate(fileArray):
+    if "application-policy>" in fileLine:
+        last_index = index
+fileArray[last_index + 1: len(newElementArray)] = [line+"\n" for line in newElementArray]
+file.close()
+file2 = open('login-config.xml', 'w')
+file2.write(string.join(fileArray))
+file2.close()
