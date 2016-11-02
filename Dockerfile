@@ -7,6 +7,11 @@ MAINTAINER AI Analysis, Inc <admin@aianalysis.com>
 
 # Load the stage folder, which contains the setup scripts.
 #
+ENV PACSDB_PORT_3306_TCP_ADDR=mysql
+ENV PACSDB_PORT_3306_TCP_PORT=3306
+ENV PACSDB_ENV_MYSQL_ROOT_PASSWORD=t68L91
+ENV ARRDB_PORT_3306_TCP_ADDR=mysql
+
 ENV DCM_ARC_VERSION=2.18.0
 ENV DCM_ARR_VERSION=3.0.11
 ENV DCM4CHEE_HOME=/var/local/dcm4chee
@@ -38,6 +43,7 @@ ENV ARR_DIR ${DCM4CHEE_HOME}/dcm4chee-arr-${DCM_ARR_VERSION}-mysql
 # Copy files from JBoss to dcm4chee
 RUN ${DCM_DIR}/bin/install_jboss.sh ${JBOSS_DIR} > /dev/null
 RUN ls ${ARR_DIR}
+
 # Copy files from the Audit Record Repository (ARR) to dcm4chee
 RUN ${DCM_DIR}/bin/install_arr.sh ${ARR_DIR}
 
